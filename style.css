@@ -47,8 +47,7 @@ button{
     border-bottom: 1px solid #E4E7E9;
 }
 
-.fa-times:hover,
-.fa-check:hover{
+.fas{
     cursor: pointer;
 }
 .fa-check{
