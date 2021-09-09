@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ! CDN font awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- ! importazione Vue.js  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- ! importazione file CSS  -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- ! Importazione BS per CSS  -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+    <title>Esercitazione 9 Settembre Vue.js</title>
+  </head>
+  <body>
+    <!-- start Root  -->
+    <div id="root" class="container">
+      <div class="logo">
+        <img
+          src="https://www.boolean.careers/images/misc/logo.png"
+          alt="Logo Boolean"
+        />
+      </div>
+      <!-- new to Do  -->
+      <div class="new-todo">
+        <input
+          placeholder="New task"
+          type="text"
+          v-model="newToDo"
+          @keyUp.enter="addToDo"
+        />
+        <button @click="addToDo" v-model="newToDo">Add</button>
+      </div>
+
+      <!-- task  -->
+      <h1 style="margin-top: 15px">Tasks to do:</h1>
+
+      <!-- list  -->
+      <div class="list">
+          <ul v-if="toDoS.length > 0">
+              <li v-for="(toDo, index) in toDoS">
+                  {{toDo.title}}
+
+                  <div class="join-icons"> 
+                      <!-- to make join the icons -->
+
+                    <i
+                    @click="toggleVisibility(index)"
+                    v-if="toDo.done"
+                    class="fas fa-check"
+                    >
+                    <!-- {{toDo.done}} -->
+                    </i>
+
+                    <i
+                    @click="toggleVisibility(index)"
+                    v-else="done"
+                    class="fas fa-times"
+                    >
+                    <!-- {{toDo.done}} -->
+                    </i>
+
+                    <i @click="removeToDo(index)" class="fas fa-trash">
+                    <!-- {{toDo.done}} -->
+                    </i>
+                
+            </li>
+          </ul>
+
+          
+          <h2 style="color: gray" v-else>You completed your tasks!</h2>
+        </div>
+        
+        <div class="done-NotDone">
+            <!-- list done  -->
+            <div style="color: green" class="done">
+                <h2>Done ✅</h2>
+                <ol>
+                    <li v-for="(toDo, index) in toDoS" v-if="toDo.done">
+                        {{toDo.title}}
+                    </li>
+                </ol>
+            </div>
+    
+            <!-- list not done  -->
+            <div style="color: green" class="done">
+                <h2>Not Done ⛔</h2>
+                <ol>
+                    <li v-for="(toDo, index) in toDoS" v-if="!toDo.done">
+                        {{toDo.title}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- to make join the icons -->
+       </div>
+
+      <!-- End Root  -->
+    </div>
+
+    <!-- ! Importazione javascript-->
+    <script src="main.js"></script>
+    <!-- ! Importazione BP per Javascript-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+  </body>
+</html>
