@@ -68,10 +68,11 @@ button{
 .done{
     background-color: #F5F7F7;
     min-height: 80px;
-    width: 45%;
+    min-width: 45%;
     border-radius: 8px;
     border: 1px solid gray;
-    padding: 5px 20px;
-    margin: 5px;
+    padding: 5px 25px;
+    min-height: 80px;
+    overflow: scroll;
 }
 

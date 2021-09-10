@@ -46,64 +46,59 @@
 
       <!-- list  -->
       <div class="list">
-          <ul v-if="toDoS.length > 0">
-              <li v-for="(toDo, index) in toDoS">
-                  {{toDo.title}}
+        <ul v-if="toDoS.length > 0">
+          <li v-for="(toDo, index) in toDoS">
+            {{toDo.title}}
+            <!-- Start icons -->
+            <div class="join-icons">
+              <i
+                @click="toggleVisibility(index)"
+                v-if="toDo.done"
+                class="fas fa-check"
+              >
+                <!-- ? {{toDo.done}} -->
+              </i>
 
-                  <div class="join-icons"> 
-                      <!-- to make join the icons -->
+              <i
+                @click="toggleVisibility(index)"
+                v-else="done"
+                class="fas fa-times"
+              >
+                <!-- ? {{toDo.done}} -->
+              </i>
 
-                    <i
-                    @click="toggleVisibility(index)"
-                    v-if="toDo.done"
-                    class="fas fa-check"
-                    >
-                    <!-- {{toDo.done}} -->
-                    </i>
+              <i @click="removeToDo(index)" class="fas fa-trash">
+                <!-- ? {{toDo.done}} -->
+              </i>
 
-                    <i
-                    @click="toggleVisibility(index)"
-                    v-else="done"
-                    class="fas fa-times"
-                    >
-                    <!-- {{toDo.done}} -->
-                    </i>
+              <!-- End icons -->
+            </div>
+          </li>
+        </ul>
+        <h2 style="color: gray" v-else>You completed your tasks!</h2>
+      </div>
 
-                    <i @click="removeToDo(index)" class="fas fa-trash">
-                    <!-- {{toDo.done}} -->
-                    </i>
-                
+      <div class="done-NotDone">
+        <!-- list done  -->
+        <div style="color: green" class="done">
+          <h2>Done ✅</h2>
+          <ol>
+            <li v-for="(toDo, index) in toDoS" v-if="toDo.done">
+              {{toDo.title}}
             </li>
-          </ul>
+          </ol>
+        </div>
 
-          
-          <h2 style="color: gray" v-else>You completed your tasks!</h2>
+        <!-- list not done  -->
+        <div style="color: red" class="done">
+          <h2>Not Done ⛔</h2>
+          <ol>
+            <li v-for="(toDo, index) in toDoS" v-if="!toDo.done">
+              {{toDo.title}}
+            </li>
+          </ol>
         </div>
-        
-        <div class="done-NotDone">
-            <!-- list done  -->
-            <div style="color: green" class="done">
-                <h2>Done ✅</h2>
-                <ol>
-                    <li v-for="(toDo, index) in toDoS" v-if="toDo.done">
-                        {{toDo.title}}
-                    </li>
-                </ol>
-            </div>
-    
-            <!-- list not done  -->
-            <div style="color: red" class="done">
-                <h2>Not Done ⛔</h2>
-                <ol>
-                    <li v-for="(toDo, index) in toDoS" v-if="!toDo.done">
-                        {{toDo.title}}
-                    </li>
-                </ol>
-            </div>
-        </div>
-        
-        <!-- to make join the icons -->
-       </div>
+      </div>
 
       <!-- End Root  -->
     </div>
